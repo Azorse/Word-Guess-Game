@@ -42,15 +42,6 @@ function hiddenWord() {
 }
 
 //Logs the word with a blank for each letter
+hiddenWord();
 console.log(blanksArray);
 
-
-
-//Takes userGuess and searches array for match
-function searchArray() {
-    for (k = 0; k < currentWord.length; k++) {
-        if (userGuess === wordArray[k]) {
-            blanksArray.push(userGuess[k];
-        } 
-    }
-}

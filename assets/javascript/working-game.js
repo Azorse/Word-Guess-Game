@@ -161,9 +161,10 @@ function endOfGame() {
 
 //Outcomes with image and bio
 
-
+function playAgain() {
+    beginNewGame();  
+}
    
-
 
 
 window.onload = function() {
@@ -175,22 +176,9 @@ document.onkeyup = function (event) {
     checkGuess(userGuess);
     if (lettersRemaining === 0 || chancesLeft === 0) {
         endOfGame();
-    }   
-}   
+  
 
-
-
-"zeus",
-
-"hera",
-"hestia",
-"demeter",
-"hermes",
-"hephaestus",
-"apollo",
-"artemis",
-"athena",
-"aphrodite",
-"ares"
+    }
+}
 
 

@@ -15,11 +15,13 @@ var wordBank = [
 var wordArray = [];
 var blanksArray = [];
 var incorrectArray = [];
+var alreadyGuessed = [];
 var currentWord = "";
 var userGuess = "";
 var lettersRemaining = 0;
 var chancesLeft = 8;
 var numberOfLetters = 0;
+var letterPresent = false;
 
 
 //Begins a new game for user
@@ -49,39 +51,36 @@ function beginNewGame() {
 
 
 //Game play of guessing and checking the guess against the random word
-//*********************************************************************
-// KNOWN BUG THAT IF YOU CHOOSE THE SAME CORRECT LETTER YOU CAN PREMATURELY END THE GAME WITH A VICTORY
-// Author included not-working.js file for refrence of what i was going for but then correct letters were not registering
 function checkGuess(userGuess) {
-    for (var k = 0; k < incorrectArray.length; k++) {
-        if (userGuess === incorrectArray[k]){
+    for (var x = 0; x < alreadyGuessed.length; x++) {
+        if (userGuess === alreadyGuessed[x]) {
             alert("You already guessed " + userGuess + "!")
+            
+        } else {
+            alreadyGuessed.push(userGuess);
+            console.log("has not been guessed")
         }
-    } //else
+    }
 
     for (var j = 0; j < numberOfLetters; j++) {
         if (userGuess === wordArray[j]) {
-            var letterPresent = true;
-        } 
+            letterPresent = true;
+
+        } else {
+            incorrectArray.push(userGuess);
+            letterPresent = false;
+
+        }
     }
+    if (letterPresent = true) {
+        blanksArray[j] = userGuess;
+        lettersRemaining--;
 
-
-
-    if (letterPresent === true) {
-        for (var i = 0; i < numberOfLetters; i++) {
-            if (userGuess === wordArray[i]) {
-                console.log("true")
-                blanksArray[i] = userGuess;
-                lettersRemaining--;
-            }
-        } 
     } else {
-        incorrectArray.push(userGuess);
         chancesLeft--;
-        console.log("number of guesses remaining " + chancesLeft);
     }
     
-    
+    chancesLeft--;
     document.getElementById("attempts").innerHTML = "You have " + chancesLeft + " guesses before you lose.";
     document.getElementById("passedGuesses").innerHTML = incorrectArray.join(" ");
     document.getElementById("unkown-olympian").innerHTML = blanksArray.join(" ");
@@ -149,11 +148,9 @@ function reward() {
 
 function endOfGame() {
     if (lettersRemaining === 0) {
-        reward();
-        document.getElementById("result").innerHTML = "You Won!"
-    } else if (chancesLeft === 0) {
-        document.getElementById("ending-image").src="./assets/images/loser.jpg"
-        document.getElementById("result") = "You Lost!"
+        alert("you won!")
+    } else if (chancesLeft ===0) {
+        alert("you lost!")
     } else {
         alert("you broke the game!")
     }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script type="text/javascript" src="assets/javascript/working-game.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Uncial+Antiqua&display=swap" rel="stylesheet">
 
     <title>Document</title>
 </head>
@@ -18,13 +19,25 @@
     <div class="main-body">
         <img id="mountO" src="assets/images/mount_olympus_127.jpg">
         <h2>Guess the correct Olympian to win</h2>
+        <h2 id="result"></h2>
 
-        <h3 id="unkownOlympian">Name of Olympian</h3>
+        <h3 id="unkown-olympian">Name of your Olympian</h3>
+
+        <img id="ending-image">
+
+        <p id="bio"></p>
         
     
     </div>
 
-    
+    <div>
+        <h4 id="attempts">You have 8 guesses before you lose.</h4>
+
+        <div class="game-info">
+            <h5>You have already guessed:</h5>
+            <p id="passedGuesses"> </p>
+        </div>
+    </div>
 
        
 
